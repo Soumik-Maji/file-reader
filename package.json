@@ -1,0 +1,26 @@
+{
+  "name": "file-reader",
+  "version": "1.0.0",
+  "description": "module to read files as text or array buffers",
+  "keywords": [
+    "file-reader"
+  ],
+  "homepage": "https://github.com/Soumik-Maji/file-reader#readme",
+  "bugs": {
+    "url": "https://github.com/Soumik-Maji/file-reader/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Soumik-Maji/file-reader.git"
+  },
+  "license": "GPL-3.0-or-later",
+  "author": "Soumik Maji",
+  "type": "module",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
