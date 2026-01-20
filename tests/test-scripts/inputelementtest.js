@@ -1,4 +1,4 @@
-import { ReadFile, Strategy } from "../../scripts/ReadFile.js";
+import { ReadFile } from "../../scripts/ReadFile.js";
 
 export async function inputelementtest() {
     const fi = document.createElement("input");
@@ -6,7 +6,7 @@ export async function inputelementtest() {
     document.body.appendChild(fi);
 
     fi.addEventListener("change", async () => {
-        const obj = ReadFile.readFrom(Strategy.HTMLInputElement, fi);
+        const obj = ReadFile.readFrom(ReadFile.Strategy.HTMLInputElement, fi);
         const a = await obj.getString();
         const b = await obj.getArrayBuffer();
 

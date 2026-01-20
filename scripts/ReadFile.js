@@ -3,17 +3,17 @@ import { FilePathStrategy } from "./strategies/FilePathStrategy.js";
 import { RawStringStrategy } from "./strategies/RawStringStrategy.js";
 import { TextAreaStrategy } from "./strategies/TextAreaStrategy.js";
 
-export const Strategy = Object.freeze({
-    "HTMLInputElement": FileInputStrategy,
-    "HTMLTextArea": TextAreaStrategy,
-    "RawString": RawStringStrategy,
-    "FilePath": FilePathStrategy,
-    // "NodeFilePath": ,
-    // "UrlStrategy": UrlStrategy
-});
-
 const constructorKey = Symbol("ReadFile");
 export class ReadFile {
+
+    static Strategy = Object.freeze({
+        "HTMLInputElement": FileInputStrategy,
+        "HTMLTextArea": TextAreaStrategy,
+        "RawString": RawStringStrategy,
+        "FilePath": FilePathStrategy,
+        // "NodeFilePath": ,
+        // "UrlStrategy": UrlStrategy
+    });
 
     #readerStrategy;  // to store the strategy temporarily
 
@@ -31,7 +31,7 @@ export class ReadFile {
      * @returns {ReadFile} chain with getString or getArrayBuffer to get the file data
      */
     static readFrom(strategy, location) {
-        if (!Object.values(Strategy).includes(strategy))
+        if (!Object.values(ReadFile.Strategy).includes(strategy))
             throw new Error("Strategy not present.");
         const tmpObj = new ReadFile(constructorKey);
         tmpObj.#readerStrategy = new strategy(location);
