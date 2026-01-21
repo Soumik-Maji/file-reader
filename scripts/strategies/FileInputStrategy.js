@@ -1,6 +1,7 @@
 import { getDecoder } from "./helper.js";
+import { StrategyInterface } from "./StrategyInterface.js";
 
-export class FileInputStrategy {
+export class FileInputStrategy extends StrategyInterface {
 
     #input;
     constructor(input) {

@@ -1,4 +1,6 @@
-export class RawStringStrategy {
+import { StrategyInterface } from "./StrategyInterface.js";
+
+export class RawStringStrategy extends StrategyInterface {
 
     #text;
     constructor(input) {
