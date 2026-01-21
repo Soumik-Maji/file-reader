@@ -5,6 +5,7 @@ export class FileInputStrategy extends StrategyInterface {
 
     #input;
     constructor(input) {
+        super();
         if (!(input instanceof HTMLInputElement && input.type === "file"))
             throw new Error("Input type is not HTML file input.");
         if (input.files.length === 0)

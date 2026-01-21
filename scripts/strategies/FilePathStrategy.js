@@ -5,6 +5,7 @@ export class FilePathStrategy extends StrategyInterface {
 
     #filepath;
     constructor(input) {
+        super();
         if (typeof input !== "string")
             throw new Error("Input is not a file path.");
         this.#filepath = input;

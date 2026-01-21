@@ -3,7 +3,8 @@
  */
 export class StrategyInterface {
     constructor() {
-        throw new Error("Cannot create instance of abstract class.");
+        if (new.target === StrategyInterface)
+            throw new Error("Cannot create instance of abstract class.");
     }
     readAsText() {
         throw new Error("Method not implemented.");
