@@ -1,4 +1,4 @@
-import { getDecoder } from "./helper.js";
+import { getStringFromArrayBuffer } from "./helper.js";
 import { StrategyInterface } from "./StrategyInterface.js";
 
 export class FileInputStrategy extends StrategyInterface {
@@ -15,9 +15,7 @@ export class FileInputStrategy extends StrategyInterface {
 
     async readAsText() {
         const arrayBuffer = await this.readAsBuffer();
-        const decoder = getDecoder(this.#input.files[0].type)
-        const data = decoder.decode(arrayBuffer);
-        return data;
+        return getStringFromArrayBuffer(arrayBuffer, this.#input.files[0].type);
     }
 
     async readAsBuffer() {

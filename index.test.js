@@ -5,5 +5,5 @@ import { textareatest } from "./tests/test-scripts/textareatest.js";
 
 await rawstringtest();
 await textareatest();
-await inputelementtest();
 await filepathtest();
+await inputelementtest();
