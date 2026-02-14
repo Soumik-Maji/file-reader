@@ -4,6 +4,7 @@ import { StrategyInterface } from "./StrategyInterface.js";
 export class FilePathStrategy extends StrategyInterface {
 
     #filepath;
+    #contentType;
     constructor(input) {
         super();
         if (typeof input !== "string")
@@ -12,17 +13,15 @@ export class FilePathStrategy extends StrategyInterface {
     }
 
     async readAsText() {
-        const [arrayBuffer, contentType] = await this.readAsBuffer();
-        return getStringFromArrayBuffer(arrayBuffer, contentType);
+        const arrayBuffer = await this.readAsBuffer();
+        return getStringFromArrayBuffer(arrayBuffer, this.#contentType);
     }
 
     async readAsBuffer() {
         const response = await fetch(this.#filepath);
         if (!response.ok)
             throw new Error(`HTTP error! Resource not found at ${this.#filepath}. Status: ${response.status}`);
-        return [
-            await response.arrayBuffer(),
-            response.headers.get("Content-Type") || ""
-        ];
+        this.#contentType = response.headers.get("Content-Type") || "";
+        return await response.arrayBuffer();
     }
 }
